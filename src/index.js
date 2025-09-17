@@ -1,14 +1,17 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+//Router는 App.js 파일 내의 모든 라우터 정보를 감싸는 역할을 합니다.
+import { BrowserRouter, Router } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  //StrictMode 코드 삭제 : 개발 도중에 발생하는 문제를 추가적으로 감지하기 위하여 rendering을 2번 수행합니다.
+  <BrowserRouter>
     <App />
-  </React.StrictMode>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
