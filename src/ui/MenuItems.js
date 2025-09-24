@@ -16,8 +16,9 @@ function App({ appName, user, handleLogout }) {
             case 'Admin':
                 return (
                     <>
-                        <Nav.Link onClick={() => navigate(``)}>상품등록</Nav.Link>
+                        <Nav.Link onClick={() => navigate(`/product/insert`)}>상품등록</Nav.Link>
                         <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
+                        {console.log('ddd:' + user?.role)}
                     </>
                 )
             case 'User':
@@ -44,7 +45,9 @@ function App({ appName, user, handleLogout }) {
                     <Navbar.Brand href='/'>{appName}</Navbar.Brand>
                     <Nav className="me-auto">
                         {/* 하이퍼링크 : Nav.Link는 다른 페이지로 이동할 때 사용됩니다.  */}
-                        <Nav.Link onClick={() => { navigate(`/product/list`) }}>상품 보기</Nav.Link>
+                        <Nav.Link onClick={() => {
+                            navigate(`/product/list`, { state: { user } })
+                        }}>상품 보기</Nav.Link>
                         {/* user에 따른 분기된 메뉴를 렌더링 */}
                         {renderMenu()}
                         <NavDropdown title={`기본 연습`}>

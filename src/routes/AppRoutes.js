@@ -8,6 +8,7 @@ import HomePage from './../pages/HomePage';
 import SignupPage from './../pages/signupPage';
 import LoginPage from './../pages/loginPage';
 import ProductList from './../pages/productList';
+import ProductListInserForm from './../pages/ProductListInserForm';
 
 //이 파일은 라우팅 정보를 담고 있는 파일 입니다.
 //이러한 파일을 네트워크에서는 routing table 이라고 합니다.
@@ -22,7 +23,8 @@ function App({ user, handleLoginSuccess }) {
             <Route path='/member/login' element={<LoginPage setUser={handleLoginSuccess} />} />
 
             {/*로그인여부에따라서 상품목록 페이지가 다르게 보여야하므로 , user 프롭스를 넘겨 줍니다.*/}
-            <Route path='/product/list' user={user} element={<ProductList />} />
+            <Route path='/product/list' element={<ProductList user={user} />} />
+            <Route path='/product/insert' element={<ProductListInserForm user={user} />} />
 
 
             <Route path='/Fruit' element={<FruitOne />} />
