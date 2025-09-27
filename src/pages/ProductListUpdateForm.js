@@ -47,7 +47,7 @@ axios.post-> axios.put 으로 변경합니다.
 
 */
 
-function App({ user }) {
+function App() {
 
     const { id } = useParams();
     console.log(`수정할 상품번호 :${id}`)

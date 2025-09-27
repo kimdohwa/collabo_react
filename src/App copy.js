@@ -4,8 +4,6 @@ import MenuItems from './ui/MenuItems';
 import AppRoutes from './routes/AppRoutes'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './App.css';
-
 
 function App() {
   const appName = "IT Academy Coffee Shop";
@@ -39,38 +37,10 @@ function App() {
 
   }
 
-  //----------------------마우스-------------------------------------------------------------
-
-  const [clicks, setClicks] = useState([]);
-
-  const handleClick = (e) => {
-    const newClick = {
-      x: e.clientX,
-      y: e.clientY,
-      id: Date.now(),
-    };
-    setClicks((prev) => [...prev, newClick]);
-
-    // 일정 시간 후 클릭 이펙트 제거
-    setTimeout(() => {
-      setClicks((prev) => prev.filter((c) => c.id !== newClick.id));
-    }, 500); // 이펙트 지속 시간 (ms)
-  };
-
   return (
-    <div onClick={handleClick} style={{
+    <div style={{
       cursor: 'url("/sora.png") 22 22, auto'
     }}>
-      {/* ------------------마우스-------------------- */}
-      {clicks.map((click) => (
-        <span
-          key={click.id}
-          className="click-effect"
-          style={{ left: click.x, top: click.y }}
-        >💗</span>
-      ))}
-      {/* -------------------------------------- */}
-
       <MenuItems appName={appName} user={user} handleLogout={handleLogout}></MenuItems>
 
       {/* 분리된 라우터 정보 */}
