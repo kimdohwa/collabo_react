@@ -23,3 +23,8 @@
         opacity: 0;
     }
 }
+
+.card-hover:hover {
+    background-color: #d0d6c085;
+    transition: background-color 0.2s ease-in-out;
+}

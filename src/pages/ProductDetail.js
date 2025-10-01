@@ -129,6 +129,40 @@ function App({ user }) {
         )
     }
 
+    //주문하기 버튼을 클릭하였습니다.
+    const buyNow = async () => {
+        if (quantity < 1) {
+            alert('수량을 1개 이상 선택해주세요.')
+            return;
+        }
+        console.log("성공");
+
+        try {
+            const url = `${API_BASE_URL}/order`
+            //스프링 부트의 OrderDto, OrderItemDto 클래스와 연관이 있습니다.
+            //주의) parameters 작성시 key의 이름은 OrderDto의 변수 이름과 동일하게 작성해야합니다.
+            //상세보기 페이지에서는 무조건 1종류의 상품만 주문할수있습니다.
+            const parameters = {
+                memberId: user.id,
+                status: "PENDING",
+                orderItems: [{
+                    productId: product.id,// 상품번호
+                    quantity: quantity// 구매수량
+                }]
+            };
+            console.log('주문할 데이터 정보');
+            console.log(parameters);
+            const response = await axios.post(url, parameters);
+            console.log(response.data)
+            alert(`${product.name} ${quantity} 개를 주문하였습니다.`)
+            navigate("/product/list");
+
+        } catch (error) {
+            alert('주문실패' + error);
+        }
+    }
+
+
     return (<>
         <Container className="my-4">
             <Card onClick={handleClick} style={{ position: 'relative' }}>
@@ -223,9 +257,15 @@ function App({ user }) {
                                     style={{ height: '48px', display: 'inline-flex', cursor: 'url("/sora.png") 22 22, auto', alignItems: 'center', justifyContent: 'center', backgroundColor: "#68320ea1", borderColor: "#68320ea1", color: "#ffffffff" }}
                                     variant="warning"
                                     className="me-3 px-4"
-                                    href=""
-
-                                >구매하기</Button>
+                                    onClick={() => {
+                                        if (!user) {
+                                            alert('로그인이 필요한 서비스입니다.');
+                                            return navigate('/member/login');
+                                        } else {
+                                            buyNow();
+                                        }
+                                    }}
+                                >주문하기</Button>
                             </div>
                         </Card.Body>
                     </Col>

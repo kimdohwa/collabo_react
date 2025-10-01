@@ -19,22 +19,24 @@ function App({ appName, user, handleLogout }) {
                 return (
                     <>
                         <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => navigate(`/product/insert`)}>상품등록</Nav.Link>
+                        {/* 관리자는 모든사람의 주문내역을 확인 */}
+                        <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => navigate(`/order/orderList`)}>주문내역</Nav.Link>
                         <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={handleLogout}>로그아웃</Nav.Link>
                     </>
                 )
             case 'User':
                 return (
                     <>
-                        <Nav.Link onClick={() => navigate(`/cart/list`)}>장바구니</Nav.Link>
-                        <Nav.Link onClick={() => navigate(``)}>주문내역</Nav.Link>
-                        <Nav.Link onClick={handleLogout}>로그아웃</Nav.Link>
+                        <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => navigate(`/cart/list`)}>장바구니</Nav.Link>
+                        <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => navigate(`/order/orderList`)}>주문내역</Nav.Link>
+                        <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={handleLogout}>로그아웃</Nav.Link>
                     </>
                 )
             default:
                 return (
                     <>
-                        <Nav.Link onClick={() => navigate(`/member/signup`)}>회원가입</Nav.Link>
-                        <Nav.Link onClick={() => navigate(`/member/login`)}>로그인</Nav.Link>
+                        <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => navigate(`/member/signup`)}>회원가입</Nav.Link>
+                        <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => navigate(`/member/login`)}>로그인</Nav.Link>
                     </>
                 )
         }
@@ -45,7 +47,7 @@ function App({ appName, user, handleLogout }) {
 
             <Navbar style={{ backgroundColor: "#9e794183", cursor: 'url("/sora.png") 22 22, auto' }} variant="dark" expand="lg">
                 <Container>
-                    <Navbar.Brand style={{ cursor: 'url("/sora.png") 22 22, auto' }} href='/' >{appName}</Navbar.Brand>
+                    <Navbar.Brand style={{ cursor: 'url("/sora.png") 22 22, auto' }} href='/' >{appName} {user?.name}</Navbar.Brand>
                     <Nav className="me-auto">
                         {/* 하이퍼링크 : Nav.Link는 다른 페이지로 이동할 때 사용됩니다.  */}
                         <Nav.Link style={{ cursor: 'url("/sora.png") 22 22, auto' }} onClick={() => {

@@ -12,6 +12,7 @@ import ProductListInserForm from './../pages/ProductListInserForm';
 import ProductListUpdateForm from './../pages/ProductListUpdateForm';
 import ProductDetail from './../pages/ProductDetail';
 import CartList from './../pages/CartList';
+import OrderList from './../pages/OrderList';
 
 //이 파일은 라우팅 정보를 담고 있는 파일 입니다.
 //이러한 파일을 네트워크에서는 routing table 이라고 합니다.
@@ -33,6 +34,7 @@ function App({ user, handleLoginSuccess }) {
 
             <Route path='/product/detail/:id' element={<ProductDetail user={user} />} />
             <Route path='/cart/list' element={<CartList user={user} />} />
+            <Route path='/order/orderList' element={<OrderList user={user} />} />
             {/* 미로그인시 장바구니와 구매하기 기능은선택이 불가능해야하므로 유저를 프롭스로 넘겨줍니다. */}
 
             <Route path='/Fruit' element={<FruitOne />} />
